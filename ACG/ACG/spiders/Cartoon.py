@@ -1,12 +1,10 @@
+import os
 import re
 
 import scrapy
 from ACG.items import AcgItem
 from scrapy import Selector
 from scrapy.spiders import CrawlSpider
-
-import os
-
 from scrapy.utils.project import get_project_settings
 
 
@@ -15,6 +13,7 @@ class Cartoon(CrawlSpider):
     # https://18h.animezilla.com/
     urlTemplate = 'https://18h.animezilla.com/manga/{id}'
     # urlTemplate = 'https://18h.animezilla.com/doujinshi/original'
+    # 漫画分数
     qualify_reta = '4.25'
     start_urls = [
         'HIQ',
@@ -22,7 +21,7 @@ class Cartoon(CrawlSpider):
         # '3894',
 
     ]
-
+    # 已爬取的漫画id
     exist_id = []
 
     # rules = (
@@ -33,10 +32,8 @@ class Cartoon(CrawlSpider):
     # )
 
     def start_requests(self):
-
-        # TODO 初始化已爬取的
+        # 初始化以爬取的漫画
         img_store = get_project_settings().get('IMAGES_STORE')
-
         for folder in os.listdir(img_store):
             self.exist_id.append(folder.split("-")[0])
 
@@ -55,12 +52,11 @@ class Cartoon(CrawlSpider):
 
     def parse_page(self, response):
         print("正在爬取页面: ", response.url)
-        selector = Selector(response)
         # 合格条件
         curr_page_acg = response.xpath("//div[contains(@class,'pure-u-1-2')]")
         for acg in curr_page_acg:
             reta_score = \
-            acg.xpath(".//div[@id='ratings_results']/small/em/strong[1]/text()").extract_first().split("/")[0]
+                acg.xpath(".//div[@id='ratings_results']/small/em/strong[1]/text()").extract_first().split("/")[0]
             if reta_score > self.qualify_reta:
                 url = acg.xpath('.//div[@class="entry-content"]/div/div[@class="pure-u-2-5"]/a/@href').extract_first()
 
