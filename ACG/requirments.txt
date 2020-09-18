@@ -1,0 +1,34 @@
+asgiref @ file:///tmp/build/80754af9/asgiref_1594338739818/work
+atomicwrites==1.4.0
+attrs @ file:///tmp/build/80754af9/attrs_1598374659300/work
+Automat==0.8.0
+bcrypt @ file:///C:/ci/bcrypt_1597918112552/work
+certifi==2020.6.20
+cffi @ file:///C:/ci/cffi_1598352799320/work
+colorama==0.4.3
+constantly==15.1.0
+cryptography @ file:///C:/ci/cryptography_1598353383151/work
+cssselect==1.1.0
+Django==3.0.3
+hyperlink==19.0.0
+incremental==17.5.0
+more-itertools==8.4.0
+parsel==1.5.2
+Pillow==7.2.0
+pluggy==0.13.1
+pyasn1==0.4.8
+pyasn1-modules==0.2.7
+PyDispatcher==2.0.5
+pytest==4.4.2
+pytest-runner==5.2
+pytz==2020.1
+pywin32==227
+queuelib==1.5.0
+Scrapy==1.6.0
+service-identity==18.1.0
+six==1.15.0
+sqlparse==0.3.1
+Twisted==20.3.0
+w3lib==1.21.0
+wincertstore==0.2
+zipp==3.1.0
